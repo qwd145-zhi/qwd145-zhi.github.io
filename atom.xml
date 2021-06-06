@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-    <id>https://qwd145.github.io/qwd145-zhi-blogs</id>
+    <id>https://qwd145-zhi.github.io/qwd145-zhi-blogs</id>
     <title>Gridea</title>
-    <updated>2021-06-06T10:29:25.085Z</updated>
+    <updated>2021-06-06T10:31:39.899Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
-    <link rel="alternate" href="https://qwd145.github.io/qwd145-zhi-blogs"/>
-    <link rel="self" href="https://qwd145.github.io/qwd145-zhi-blogs/atom.xml"/>
+    <link rel="alternate" href="https://qwd145-zhi.github.io/qwd145-zhi-blogs"/>
+    <link rel="self" href="https://qwd145-zhi.github.io/qwd145-zhi-blogs/atom.xml"/>
     <subtitle>温故而知新</subtitle>
-    <logo>https://qwd145.github.io/qwd145-zhi-blogs/images/avatar.png</logo>
-    <icon>https://qwd145.github.io/qwd145-zhi-blogs/favicon.ico</icon>
+    <logo>https://qwd145-zhi.github.io/qwd145-zhi-blogs/images/avatar.png</logo>
+    <icon>https://qwd145-zhi.github.io/qwd145-zhi-blogs/favicon.ico</icon>
     <rights>All rights reserved 2021, Gridea</rights>
     <entry>
         <title type="html"><![CDATA[Welcome!]]></title>
-        <id>https://qwd145.github.io/qwd145-zhi-blogs/post/welcome/</id>
-        <link href="https://qwd145.github.io/qwd145-zhi-blogs/post/welcome/">
+        <id>https://qwd145-zhi.github.io/qwd145-zhi-blogs/post/welcome/</id>
+        <link href="https://qwd145-zhi.github.io/qwd145-zhi-blogs/post/welcome/">
         </link>
         <updated>2021-06-06T10:01:50.000Z</updated>
         <content type="html"><![CDATA[<p>welcome!这里是一个在2021.6.6开通的一个专属于xiaozhi(qwd145)的blog站点<br>
