@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://qwd145-zhi.github.io/</id>
     <title>qwd145-zhi的博客站</title>
-    <updated>2021-09-16T15:25:31.525Z</updated>
+    <updated>2021-09-16T15:28:50.844Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://qwd145-zhi.github.io/"/>
     <link rel="self" href="https://qwd145-zhi.github.io/atom.xml"/>
@@ -11,13 +11,22 @@
     <icon>https://qwd145-zhi.github.io/favicon.ico</icon>
     <rights>All rights reserved 2021, qwd145-zhi的博客站</rights>
     <entry>
+        <title type="html"><![CDATA[debug]]></title>
+        <id>https://qwd145-zhi.github.io/post/debug/</id>
+        <link href="https://qwd145-zhi.github.io/post/debug/">
+        </link>
+        <updated>2021-09-16T15:28:25.000Z</updated>
+        <content type="html"><![CDATA[<p>测试tag功能</p>
+]]></content>
+    </entry>
+    <entry>
         <title type="html"><![CDATA[Welcome!]]></title>
         <id>https://qwd145-zhi.github.io/post/welcome/</id>
         <link href="https://qwd145-zhi.github.io/post/welcome/">
         </link>
         <updated>2021-06-06T10:01:50.000Z</updated>
-        <content type="html"><![CDATA[<p>welcome!这里是一个在2021.6.6开通的一个专属于xiaozhi(qwd145)的blog站点<br>
-当然,还不知道要在这里放啥awa</p>
+        <content type="html"><![CDATA[<p>welcome!<br>
+这里是小智(qwd145)的小窝,常常会发一些文章还有包括mc服务器DC梦想商业城(官网 mcrail.top)的辽海新闻awa</p>
 ]]></content>
     </entry>
 </feed>
