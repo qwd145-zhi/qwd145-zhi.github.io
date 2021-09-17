@@ -2,10 +2,9 @@
 <html>
 
 <head>
-    
-        <meta charset="utf-8" />
+    <meta charset="utf-8" />
 <title>
-    友链 | qwd145-zhi的博客站
+    qwd145-zhi的博客站
 </title>
 <!--[if lt IE 9]><script src="//cdn.bootcss.com/html5shiv/r29/html5.js"></script><![endif]-->
 <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
@@ -47,7 +46,6 @@
                                 })();
                             </script>
                             
-            
 </head>
 
 <body>
@@ -155,35 +153,194 @@
                 <div class="container">
                     <article class="post-wrap">
                         <header class="post-header">
-                            <h1 class="post-title zh">
-                                &#x53CB;&#x94FE;
+                            <h1 class="post-title">
+                                论在计算机模拟下实现概率计算
                             </h1>
-                            <h1 class="post-title en">
-                                Friends
-                            </h1>
-                        </header>
-                        <div class="post-content">
                             
+                                    <!--zh-->
+                                    <div class="post-meta zh">
+                                        &#x4F5C;&#x8005;:
+                                        <a itemprop="author" rel="author" href="/">
+                                            qwd145-zhi的博客站
+                                        </a>
+                                        <span class="post-time">&#x65E5;&#x671F;: <a href="#">2021-09-17</a></span>
+                                        <span class="post-readtime">&#x9605;&#x8BFB;&#x65F6;&#x95F4;:<a
+                                    href="#">2.0
+                                    &#x5206;&#x949F;</a></span>
+                                        <span class="post-words">&#x5B57;&#x6570;:<a href="#">437</a></span>
+                                        
+                                            <span class="post-category">&#x5206;&#x7C7B;:
                                 
-                                    <div class="friend-box">
-                                        <img class="friend-avatar" src="https://blog.itjoker.cn/images/avatar.png">
-                                        <div class="flink-info">
-                                            <a href="https://blog.itjoker.cn" target="_blank">
-                                                ITJoker
-                                            </a>
-                                            <br />
-                                            ITJoker&#39;s Blog
-                                        </div>
+                                <a href="https://qwd145-zhi.github.io/zhenghuo/">整活</a>
+                                
+                            </span>
+                                            
+                                                阅读量:
+                                                <span data-hk-page="current"> - </span>
+                                                
                                     </div>
                                     
-                                        
+                        </header>
+                        
+                        <div class="post-content">
+                            <p>#写在前面<br>
+我在数学书上看了用频率算概率这节,突发奇想,想用我为数不多的C++知识来实现一下(一年没碰C++了)<br>
+#正文<br>
+##1.计算硬币的正反面概率<br>
+###(1)使用rand来进行随机数计算<br>
+使用标准库 cstdlib 的随机数函数进行随机生成数后求余,进行10000次随机数求余计算<br>
+主体代码如下</p>
+<pre><code class="language-C++">#include &lt;iostream&gt;
+#include &lt;cstdlib&gt;
+using namespace std;
+int main() {
+	int a;
+	double target = 0;
+	double total;
+	for (int i = 0; i &lt; 10000; i++) {
+		a = rand() % 2;
+		cout &lt;&lt; a &lt;&lt; '\t';
+		if (a != 0) {
+			target++;
+		}
+		total++;
+	}
+	double p;
+	p = target / total;
+	cout &lt;&lt; &quot;\n目标事件&quot; &lt;&lt; target &lt;&lt; '\n' &lt;&lt; &quot;事件总数&quot; &lt;&lt; total &lt;&lt; '\n' &lt;&lt; &quot;p=&quot; &lt;&lt; p;
+}
+</code></pre>
+<p>输出结果如下</p>
+<pre><code>(前面随机数生成不显示)
+目标事件5035
+事件总数10000
+p=0.5035
+</code></pre>
+<h2 id="不过我发现这个程序的随机数生成的p概率值都一样大草">不过我发现这个程序的随机数生成的p(概率)值都一样(大草)</h2>
+<p>###(2)通过time函数进行随机数计算<br>
+使用标准库 ctime 的随机数函数进行随机生成数后求余,进行10000次随机数求余计算<br>
+主体代码如下</p>
+<pre><code>#include &lt;iostream&gt;
+#include &lt;ctime&gt;
+using namespace std;
+
+int main() {
+	int a;
+	double target = 0;
+	double total;
+	for (int i = 0; i &lt; 10000; i++) {
+		a = time(0) % 2;
+		cout &lt;&lt; a &lt;&lt; '\t';
+		if (a != 0) {
+			target++;
+		}
+		total++;
+	}
+	double p;
+	p = target / total;
+	cout &lt;&lt; &quot;\n目标事件&quot; &lt;&lt; target &lt;&lt; '\n' &lt;&lt; &quot;事件总数&quot; &lt;&lt; total &lt;&lt; '\n' &lt;&lt; &quot;p=&quot; &lt;&lt; p;
+}
+</code></pre>
+<p>(懒)<br>
+输出结果如下</p>
+<pre><code>(随机数生成省略)
+目标事件5252
+事件总数10000
+p=0.5252
+</code></pre>
+<p>(这玩意全都是0,1一块来的草)<br>
+(先写到这,后续更新)</p>
+
                         </div>
+                        
+                            <div class="post-toc">
+                                <ul class="markdownIt-TOC">
+<li>
+<ul>
+<li><a href="#%E4%B8%8D%E8%BF%87%E6%88%91%E5%8F%91%E7%8E%B0%E8%BF%99%E4%B8%AA%E7%A8%8B%E5%BA%8F%E7%9A%84%E9%9A%8F%E6%9C%BA%E6%95%B0%E7%94%9F%E6%88%90%E7%9A%84p%E6%A6%82%E7%8E%87%E5%80%BC%E9%83%BD%E4%B8%80%E6%A0%B7%E5%A4%A7%E8%8D%89">不过我发现这个程序的随机数生成的p(概率)值都一样(大草)</a></li>
+</ul>
+</li>
+</ul>
+
+                            </div>
+                            
+                                
+                                    
+                                            <!--zh-->
+                                            <section class="post-copyright zh">
+                                                <p class="copyright-item ">
+                                                    <span>&#x4F5C;&#x8005;:</span>
+                                                    <span>qwd145-zhi的博客站</span>
+                                                </p>
+
+                                                <p class="copyright-item">
+                                                    <span>&#x6C38;&#x4E45;&#x94FE;&#x63A5;:</span>
+                                                    <span><a href="https://qwd145-zhi.github.io/lun-zai-ji-suan-ji-mo-ni-xia-shi-xian-gai-lu-ji-suan/">https://qwd145-zhi.github.io/lun-zai-ji-suan-ji-mo-ni-xia-shi-xian-gai-lu-ji-suan/</a></span>
+                                                </p>
+
+                                                <p class="copyright-item">
+                                                    <span>&#x534F;&#x8BAE;:</span>
+                                                    <span>MIT License</span>
+                                                </p>
+                                            </section>
+                                            
+                                                
+                                                    
+                                                                    <!--Share-->
+                                                                    <span style="margin-right:15px">
+                        <i class="post-share"></i>
+                        <span>&#x5206;&#x4EAB;:</span>
+                                                                    <a title="QR 码" target="_blank" href="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://qwd145-zhi.github.io/lun-zai-ji-suan-ji-mo-ni-xia-shi-xian-gai-lu-ji-suan/"><i class="fa fa-qrcode"></i></a>
+                                                                    <a title="QQ" target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://qwd145-zhi.github.io/lun-zai-ji-suan-ji-mo-ni-xia-shi-xian-gai-lu-ji-suan/&sharesource=qzone&title=论在计算机模拟下实现概率计算&pics=https://qwd145-zhi.github.io//images/avatar.png?v=1631849316020&summary="><i class="fa fa-qq"></i></a>
+                                                                    <a title="新浪微博" target="_blank" href="https://service.weibo.com/share/share.php?url=https://qwd145-zhi.github.io/lun-zai-ji-suan-ji-mo-ni-xia-shi-xian-gai-lu-ji-suan/&sharesource=weibo&title=论在计算机模拟下实现概率计算 + " - " + &pic="https://qwd145-zhi.github.io//images/avatar.png?v=1631849316020 "><i class="fa fa-weibo "></i></a>
+
+                                                                    </span>
+                                                                    
+                                                                        <div class="reward ">
+                                                                            <div class="reward-button ">&yen;
+                                                                                <span class="reward-code "> 
+                        <span class="alipay-code "> <img class="alipay-img " alt = "support " src="/1631837231144.jpg"><b>支付宝</b> </span>
+                                                                                <span class="wechat-code "> <img alt ="support " class="wechat-img " src="/mm_facetoface_collect_qrcode_1631837214981.png"><b>微信</b> </span> </span>
+                                                                            </div>
+                                                                        </div>
+                                                                        
+                                                                            <!--zh-->
+                                                                            <section class="post-tags zh ">
+                                                                                <div>
+                                                                                    <span>&#x6807;&#x7B7E;:</span>
+                                                                                    <span class="tag ">
+                        
+                        
+                        <a href="https://qwd145-zhi.github.io/zhenghuo/">#
+                    整活
+                        </a>
+                        
+                            
+                                </span>
+                                                                                </div>
+                                                                                <div>
+                                                                                    <a href="javascript:window.history.back();">
+                        &#x8FD4;&#x56DE;</a>
+                                                                                    <span>&dot;</span>
+                                                                                    <a href="#">&#x4E3B;&#x9875;</a>
+                                                                                </div>
+                                                                            </section>
+
+                                                                            
+                                                                                <!---->
+                                                                                <section class="post-nav">
+                                                                                    
+                                                                                            
+                                                                                                <a class="next" rel="next" href="https://qwd145-zhi.github.io/debug/">
+                                                                                                    debug
+                                                                                                </a>
+                                                                                                
+                                                                                </section>
                     </article>
                 </div>
-            </div>
-            
-                                        
-                                            <script type="application/javascript" src="//unpkg.com/valine@latest/dist/Valine.min.js"></script>
+                
+                                            
+                                                <script type="application/javascript" src="//unpkg.com/valine@latest/dist/Valine.min.js"></script>
 <div id="vlaine-comment"></div>
 <script type="application/javascript">
     new Valine({
@@ -198,7 +355,10 @@
         recordIP: false,
     })
 </script>
-                                                
+                                                    
+            </div>
+    </div>
+    </div>
     </div>
     
         <footer id="footer" class="footer">
@@ -251,6 +411,10 @@
                     console.log(" Blog Update Time: " + newDate.toLocaleDateString());
                     console.log("\n %c \u26a1Theme:Chic Author's Blog:https://blog.itjoker.cn  Write By ITJoker  \n\n", "color: #ffffff; background: rgba(49, 49, 49, 0.85); padding:5px 0;border-radius:5px;");
                 </script>
+        </div>
 </body>
+<script>
+    scroll();
+</script>
 
 </html>

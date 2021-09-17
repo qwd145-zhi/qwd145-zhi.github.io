@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://qwd145-zhi.github.io/</id>
     <title>qwd145-zhi的博客站</title>
-    <updated>2021-09-17T01:52:13.699Z</updated>
+    <updated>2021-09-17T03:28:43.932Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://qwd145-zhi.github.io/"/>
     <link rel="self" href="https://qwd145-zhi.github.io/atom.xml"/>
@@ -10,6 +10,81 @@
     <logo>https://qwd145-zhi.github.io/images/avatar.png</logo>
     <icon>https://qwd145-zhi.github.io/favicon.ico</icon>
     <rights>All rights reserved 2021, qwd145-zhi的博客站</rights>
+    <entry>
+        <title type="html"><![CDATA[论在计算机模拟下实现概率计算]]></title>
+        <id>https://qwd145-zhi.github.io/lun-zai-ji-suan-ji-mo-ni-xia-shi-xian-gai-lu-ji-suan/</id>
+        <link href="https://qwd145-zhi.github.io/lun-zai-ji-suan-ji-mo-ni-xia-shi-xian-gai-lu-ji-suan/">
+        </link>
+        <updated>2021-09-17T02:47:31.000Z</updated>
+        <content type="html"><![CDATA[<p>#写在前面<br>
+我在数学书上看了用频率算概率这节,突发奇想,想用我为数不多的C++知识来实现一下(一年没碰C++了)<br>
+#正文<br>
+##1.计算硬币的正反面概率<br>
+###(1)使用rand来进行随机数计算<br>
+使用标准库 cstdlib 的随机数函数进行随机生成数后求余,进行10000次随机数求余计算<br>
+主体代码如下</p>
+<pre><code class="language-C++">#include &lt;iostream&gt;
+#include &lt;cstdlib&gt;
+using namespace std;
+int main() {
+	int a;
+	double target = 0;
+	double total;
+	for (int i = 0; i &lt; 10000; i++) {
+		a = rand() % 2;
+		cout &lt;&lt; a &lt;&lt; '\t';
+		if (a != 0) {
+			target++;
+		}
+		total++;
+	}
+	double p;
+	p = target / total;
+	cout &lt;&lt; &quot;\n目标事件&quot; &lt;&lt; target &lt;&lt; '\n' &lt;&lt; &quot;事件总数&quot; &lt;&lt; total &lt;&lt; '\n' &lt;&lt; &quot;p=&quot; &lt;&lt; p;
+}
+</code></pre>
+<p>输出结果如下</p>
+<pre><code>(前面随机数生成不显示)
+目标事件5035
+事件总数10000
+p=0.5035
+</code></pre>
+<h2 id="不过我发现这个程序的随机数生成的p概率值都一样大草">不过我发现这个程序的随机数生成的p(概率)值都一样(大草)</h2>
+<p>###(2)通过time函数进行随机数计算<br>
+使用标准库 ctime 的随机数函数进行随机生成数后求余,进行10000次随机数求余计算<br>
+主体代码如下</p>
+<pre><code>#include &lt;iostream&gt;
+#include &lt;ctime&gt;
+using namespace std;
+
+int main() {
+	int a;
+	double target = 0;
+	double total;
+	for (int i = 0; i &lt; 10000; i++) {
+		a = time(0) % 2;
+		cout &lt;&lt; a &lt;&lt; '\t';
+		if (a != 0) {
+			target++;
+		}
+		total++;
+	}
+	double p;
+	p = target / total;
+	cout &lt;&lt; &quot;\n目标事件&quot; &lt;&lt; target &lt;&lt; '\n' &lt;&lt; &quot;事件总数&quot; &lt;&lt; total &lt;&lt; '\n' &lt;&lt; &quot;p=&quot; &lt;&lt; p;
+}
+</code></pre>
+<p>(懒)<br>
+输出结果如下</p>
+<pre><code>(随机数生成省略)
+目标事件5252
+事件总数10000
+p=0.5252
+</code></pre>
+<p>(这玩意全都是0,1一块来的草)<br>
+(先写到这,后续更新)</p>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[debug]]></title>
         <id>https://qwd145-zhi.github.io/debug/</id>
