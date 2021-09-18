@@ -76,7 +76,7 @@
                         <input id="switch_default" type="checkbox" class="switch_default">
                         <label for="switch_default" class="toggleBtn"></label>
             </div>
-            <form id="gridea-search-form" data-update="1631851405188" action="/search/index.html">
+            <form id="gridea-search-form" data-update="1631948021212" action="/search/index.html">
                 <input class="search-input" autocomplete="off" spellcheck="false" name="q" autofocus="true" placeholder="Search...">
             </form>
         </div>
@@ -95,7 +95,7 @@
                         <!--zh-->
                         <a id="mobile-toggle-theme-zh" class="a zh">&nbsp;&#x6697;&#x9ED1;</a>
                     </div>
-                    <form id="gridea-search-form" data-update="1631851405188" action="/search/index.html">
+                    <form id="gridea-search-form" data-update="1631948021212" action="/search/index.html">
                         <input class="search-input" autocomplete="off" spellcheck="false" name="q" autofocus="true" placeholder="Search...">
                     </form>
                     <!--en-->
@@ -165,9 +165,9 @@
                                         </a>
                                         <span class="post-time">&#x65E5;&#x671F;: <a href="#">2021-09-17</a></span>
                                         <span class="post-readtime">&#x9605;&#x8BFB;&#x65F6;&#x95F4;:<a
-                                    href="#">2.0
+                                    href="#">3.6
                                     &#x5206;&#x949F;</a></span>
-                                        <span class="post-words">&#x5B57;&#x6570;:<a href="#">437</a></span>
+                                        <span class="post-words">&#x5B57;&#x6570;:<a href="#">734</a></span>
                                         
                                             <span class="post-category">&#x5206;&#x7C7B;:
                                 
@@ -184,19 +184,22 @@
                         
                         <div class="post-content">
                             <h1 id="写在前面">写在前面</h1>
-<p>我在数学书上看了用频率算概率这节,突发奇想,想用我为数不多的C++知识来实现一下(一年没碰C++了)</p>
+<p>我在数学书上看了用频率算概率这节,突发奇想,想用我为数不多的C++知识来实现一下(一年没碰C++了)<br>
+然后记录下沙雕整活时刻以留纪念</p>
 <h1 id="正文">正文</h1>
 <h2 id="1计算硬币的正反面概率">1.计算硬币的正反面概率</h2>
-<h3 id="1使用rand来进行随机数计算">(1)使用rand来进行随机数计算</h3>
-<p>使用标准库 cstdlib 的随机数函数进行随机生成数后求余,进行10000次随机数求余计算<br>
-主体代码如下</p>
+<p>使用标准库 cstdlib 的随机数函数rand(使用srand+time生成随机种子)进行随机生成数后求余,进行10000次随机数求余计算<br>
+具体代码如下</p>
 <pre><code class="language-C++">#include &lt;iostream&gt;
+#include &lt;ctime&gt;
 #include &lt;cstdlib&gt;
 using namespace std;
+
 int main() {
 	int a;
 	double target = 0;
 	double total;
+	srand((int)time(0));
 	for (int i = 0; i &lt; 10000; i++) {
 		a = rand() % 2;
 		cout &lt;&lt; a &lt;&lt; '\t';
@@ -212,44 +215,108 @@ int main() {
 </code></pre>
 <p>输出结果如下</p>
 <pre><code>(前面随机数生成不显示)
-目标事件5035
+目标事件5056
 事件总数10000
-p=0.5035
+p=0.5056
 </code></pre>
-<p>不过我发现这个程序的随机数生成的p(概率)值都一样(大草)</p>
-<h3 id="2通过time函数进行随机数计算">(2)通过time函数进行随机数计算</h3>
-<p>使用标准库 ctime 的随机数函数进行随机生成数后求余,进行10000次随机数求余计算<br>
-主体代码如下</p>
-<pre><code>#include &lt;iostream&gt;
+<h2 id="2生日月份计算">2.生日月份计算</h2>
+<p>同硬币概率,不过需要用switch进行筛选以及各个月份的概率计算,一次性600次<br>
+具体代码如下</p>
+<pre><code class="language-C++">#include &lt;iostream&gt;
+#include &lt;cstdlib&gt;
+#include &lt;string&gt;
 #include &lt;ctime&gt;
 using namespace std;
 
 int main() {
 	int a;
-	double target = 0;
+	double month[12] {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
 	double total;
-	for (int i = 0; i &lt; 10000; i++) {
-		a = time(0) % 2;
+	srand((int)time(0));
+	for (int i = 0; i &lt; 600; i++) {
+		a = rand() % 12;
 		cout &lt;&lt; a &lt;&lt; '\t';
-		if (a != 0) {
-			target++;
+		switch (a) {
+			case 0 :
+				month[0]++;
+				break;
+			case 1 :
+				month[1]++;
+				break;
+			case 2 :
+				month[2]++;
+				break;
+			case 3 :
+				month[3]++;
+				break;
+			case 4 :
+				month[4]++;
+				break;
+			case 5 :
+				month[5]++;
+				break;
+			case 6 :
+				month[6]++;
+				break;
+			case 7 :
+				month[7]++;
+				break;
+			case 8 :
+				month[8]++;
+				break;
+			case 9 :
+				month[9]++;
+				break;
+			case 10 :
+				month[10]++;
+				break;
+			case 11 :
+				month[11]++;
+				break;
+			default :
+				break;
 		}
 		total++;
 	}
-	double p;
-	p = target / total;
-	cout &lt;&lt; &quot;\n目标事件&quot; &lt;&lt; target &lt;&lt; '\n' &lt;&lt; &quot;事件总数&quot; &lt;&lt; total &lt;&lt; '\n' &lt;&lt; &quot;p=&quot; &lt;&lt; p;
+	cout &lt;&lt; &quot;\n 事件总数:&quot; &lt;&lt; total;
+	double p[12];
+	string months[12] {&quot;Jan&quot;, &quot;Feb&quot;, &quot;Mar&quot;, &quot;Apr&quot;, &quot;May&quot;, &quot;Jun&quot;, &quot;Jul&quot;, &quot;Aug&quot;, &quot;Sept&quot;, &quot;Oct&quot;, &quot;Nov&quot;, &quot;Dec&quot;};
+	for (int i = 0; i &lt; 12; i++) {
+		p[i] = month[i] / total;
+		cout &lt;&lt; &quot;\n 目标事件&quot; &lt;&lt; months[i] &lt;&lt; &quot;出现次数&quot; &lt;&lt; month[i] &lt;&lt; &quot;\t p&quot; &lt;&lt; &quot;[&quot; &lt;&lt; months[i] &lt;&lt; &quot;]=&quot; &lt;&lt; p[i] &lt;&lt; '\n';
+	}
+	return 0;
 }
 </code></pre>
-<p>(懒)<br>
-输出结果如下</p>
-<pre><code>(随机数生成省略)
-目标事件5252
-事件总数10000
-p=0.5252
+<p>输出结果如下</p>
+<pre><code>(随机数生成略)
+ 事件总数:600
+ 目标事件Jan出现次数52   p[Jan]=0.0866667
+
+ 目标事件Feb出现次数41   p[Feb]=0.0683333
+
+ 目标事件Mar出现次数42   p[Mar]=0.07
+
+ 目标事件Apr出现次数44   p[Apr]=0.0733333
+
+ 目标事件May出现次数43   p[May]=0.0716667
+
+ 目标事件Jun出现次数53   p[Jun]=0.0883333
+
+ 目标事件Jul出现次数56   p[Jul]=0.0933333
+
+ 目标事件Aug出现次数54   p[Aug]=0.09
+
+ 目标事件Sept出现次数43  p[Sept]=0.0716667
+
+ 目标事件Oct出现次数57   p[Oct]=0.095
+
+ 目标事件Nov出现次数64   p[Nov]=0.106667
+
+ 目标事件Dec出现次数51   p[Dec]=0.085
 </code></pre>
-<p>(这玩意全都是0,1一块来的草)<br>
-(先写到这,后续更新)</p>
+<p>(再来个生日日期的,工程量更大)<br>
+最后编辑时间 2021/9/18</p>
 
                         </div>
                         
@@ -258,12 +325,8 @@ p=0.5252
 <li><a href="#%E5%86%99%E5%9C%A8%E5%89%8D%E9%9D%A2">写在前面</a></li>
 <li><a href="#%E6%AD%A3%E6%96%87">正文</a>
 <ul>
-<li><a href="#1%E8%AE%A1%E7%AE%97%E7%A1%AC%E5%B8%81%E7%9A%84%E6%AD%A3%E5%8F%8D%E9%9D%A2%E6%A6%82%E7%8E%87">1.计算硬币的正反面概率</a>
-<ul>
-<li><a href="#1%E4%BD%BF%E7%94%A8rand%E6%9D%A5%E8%BF%9B%E8%A1%8C%E9%9A%8F%E6%9C%BA%E6%95%B0%E8%AE%A1%E7%AE%97">(1)使用rand来进行随机数计算</a></li>
-<li><a href="#2%E9%80%9A%E8%BF%87time%E5%87%BD%E6%95%B0%E8%BF%9B%E8%A1%8C%E9%9A%8F%E6%9C%BA%E6%95%B0%E8%AE%A1%E7%AE%97">(2)通过time函数进行随机数计算</a></li>
-</ul>
-</li>
+<li><a href="#1%E8%AE%A1%E7%AE%97%E7%A1%AC%E5%B8%81%E7%9A%84%E6%AD%A3%E5%8F%8D%E9%9D%A2%E6%A6%82%E7%8E%87">1.计算硬币的正反面概率</a></li>
+<li><a href="#2%E7%94%9F%E6%97%A5%E6%9C%88%E4%BB%BD%E8%AE%A1%E7%AE%97">2.生日月份计算</a></li>
 </ul>
 </li>
 </ul>
@@ -297,8 +360,8 @@ p=0.5252
                         <i class="post-share"></i>
                         <span>&#x5206;&#x4EAB;:</span>
                                                                     <a title="QR 码" target="_blank" href="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://qwd145-zhi.github.io/20210917_1/"><i class="fa fa-qrcode"></i></a>
-                                                                    <a title="QQ" target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://qwd145-zhi.github.io/20210917_1/&sharesource=qzone&title=论在计算机模拟下实现概率计算&pics=https://qwd145-zhi.github.io//images/avatar.png?v=1631851405188&summary="><i class="fa fa-qq"></i></a>
-                                                                    <a title="新浪微博" target="_blank" href="https://service.weibo.com/share/share.php?url=https://qwd145-zhi.github.io/20210917_1/&sharesource=weibo&title=论在计算机模拟下实现概率计算 + " - " + &pic="https://qwd145-zhi.github.io//images/avatar.png?v=1631851405188 "><i class="fa fa-weibo "></i></a>
+                                                                    <a title="QQ" target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://qwd145-zhi.github.io/20210917_1/&sharesource=qzone&title=论在计算机模拟下实现概率计算&pics=https://qwd145-zhi.github.io//images/avatar.png?v=1631948021212&summary="><i class="fa fa-qq"></i></a>
+                                                                    <a title="新浪微博" target="_blank" href="https://service.weibo.com/share/share.php?url=https://qwd145-zhi.github.io/20210917_1/&sharesource=weibo&title=论在计算机模拟下实现概率计算 + " - " + &pic="https://qwd145-zhi.github.io//images/avatar.png?v=1631948021212 "><i class="fa fa-weibo "></i></a>
 
                                                                     </span>
                                                                     
@@ -413,7 +476,7 @@ p=0.5252
                     CheckVersion();
                     
                     var newDate = new Date();
-                    newDate.setTime(1631851405188);
+                    newDate.setTime(1631948021212);
                     console.log(" Blog Update Time: " + newDate.toLocaleDateString());
                     console.log("\n %c \u26a1Theme:Chic Author's Blog:https://blog.itjoker.cn  Write By ITJoker  \n\n", "color: #ffffff; background: rgba(49, 49, 49, 0.85); padding:5px 0;border-radius:5px;");
                 </script>
