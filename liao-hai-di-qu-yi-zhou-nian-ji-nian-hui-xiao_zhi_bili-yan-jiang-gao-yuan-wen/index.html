@@ -154,7 +154,7 @@
                     <article class="post-wrap">
                         <header class="post-header">
                             <h1 class="post-title">
-                                论在计算机模拟下实现概率计算
+                                辽海地区一周年纪念会xiao_zhi_bili演讲稿原文
                             </h1>
                             
                                     <!--zh-->
@@ -163,15 +163,15 @@
                                         <a itemprop="author" rel="author" href="/">
                                             小智(qwd145)的博客站
                                         </a>
-                                        <span class="post-time">&#x65E5;&#x671F;: <a href="#">2021-09-17</a></span>
+                                        <span class="post-time">&#x65E5;&#x671F;: <a href="#">2021-10-09</a></span>
                                         <span class="post-readtime">&#x9605;&#x8BFB;&#x65F6;&#x95F4;:<a
-                                    href="#">3.5
+                                    href="#">2.0
                                     &#x5206;&#x949F;</a></span>
-                                        <span class="post-words">&#x5B57;&#x6570;:<a href="#">722</a></span>
+                                        <span class="post-words">&#x5B57;&#x6570;:<a href="#">590</a></span>
                                         
                                             <span class="post-category">&#x5206;&#x7C7B;:
                                 
-                                <a href="https://qwd145-zhi.github.io/zhenghuo/">整活</a>
+                                <a href="https://qwd145-zhi.github.io/DC-liaohai/">DC-辽海</a>
                                 
                             </span>
                                             
@@ -182,153 +182,44 @@
                                     
                         </header>
                         
+                            <img class="post-feature-image" src="https://z3.ax1x.com/2021/10/03/4qepz8.png" alt="">
+                          
                         <div class="post-content">
-                            <h1 id="写在前面">写在前面</h1>
-<p>我在数学书上看了用频率算概率这节,突发奇想,想用我为数不多的C++知识来实现一下(一年没碰C++了)<br>
-然后记录下沙雕整活时刻以留纪念</p>
-<h1 id="正文">正文</h1>
-<h2 id="1计算硬币的正反面概率">1.计算硬币的正反面概率</h2>
-<p>使用标准库 cstdlib 的随机数函数rand(使用srand+time生成随机种子)进行随机生成数后求余,进行10000次随机数求余计算<br>
-具体代码如下</p>
-<pre><code class="language-C++">#include &lt;iostream&gt;
-#include &lt;ctime&gt;
-#include &lt;cstdlib&gt;
-using namespace std;
-
-int main() {
-	int a;
-	double target = 0;
-	double total;
-	srand((int)time(0));
-	for (int i = 0; i &lt; 10000; i++) {
-		a = rand() % 2;
-		cout &lt;&lt; a &lt;&lt; '\t';
-		if (a != 0) {
-			target++;
-		}
-		total++;
-	}
-	double p;
-	p = target / total;
-	cout &lt;&lt; &quot;\n目标事件&quot; &lt;&lt; target &lt;&lt; '\n' &lt;&lt; &quot;事件总数&quot; &lt;&lt; total &lt;&lt; '\n' &lt;&lt; &quot;p=&quot; &lt;&lt; p;
-}
-</code></pre>
-<p>输出结果如下</p>
-<pre><code>(前面随机数生成不显示)
-目标事件5056
-事件总数10000
-p=0.5056
-</code></pre>
-<h2 id="2生日月份计算">2.生日月份计算</h2>
-<p>同硬币概率,不过需要用switch进行筛选以及各个月份的概率计算,一次性600次<br>
-具体代码如下</p>
-<pre><code class="language-C++">#include &lt;iostream&gt;
-#include &lt;cstdlib&gt;
-#include &lt;string&gt;
-#include &lt;ctime&gt;
-using namespace std;
-
-int main() {
-	int a;
-	double month[12] {};
-	double total;
-	srand((int)time(0));
-	for (int i = 0; i &lt; 600; i++) {
-		a = rand() % 12;
-		cout &lt;&lt; a &lt;&lt; '\t';
-		switch (a) {
-			case 0 :
-				month[0]++;
-				break;
-			case 1 :
-				month[1]++;
-				break;
-			case 2 :
-				month[2]++;
-				break;
-			case 3 :
-				month[3]++;
-				break;
-			case 4 :
-				month[4]++;
-				break;
-			case 5 :
-				month[5]++;
-				break;
-			case 6 :
-				month[6]++;
-				break;
-			case 7 :
-				month[7]++;
-				break;
-			case 8 :
-				month[8]++;
-				break;
-			case 9 :
-				month[9]++;
-				break;
-			case 10 :
-				month[10]++;
-				break;
-			case 11 :
-				month[11]++;
-				break;
-			default :
-				break;
-		}
-		total++;
-	}
-	cout &lt;&lt; &quot;\n 事件总数:&quot; &lt;&lt; total;
-	double p[12];
-	string months[12] {&quot;Jan&quot;, &quot;Feb&quot;, &quot;Mar&quot;, &quot;Apr&quot;, &quot;May&quot;, &quot;Jun&quot;, &quot;Jul&quot;, &quot;Aug&quot;, &quot;Sept&quot;, &quot;Oct&quot;, &quot;Nov&quot;, &quot;Dec&quot;};
-	for (int i = 0; i &lt; 12; i++) {
-		p[i] = month[i] / total;
-		cout &lt;&lt; &quot;\n 目标事件&quot; &lt;&lt; months[i] &lt;&lt; &quot;出现次数&quot; &lt;&lt; month[i] &lt;&lt; &quot;\t p&quot; &lt;&lt; &quot;[&quot; &lt;&lt; months[i] &lt;&lt; &quot;]=&quot; &lt;&lt; p[i] &lt;&lt; '\n';
-	}
-	return 0;
-}
-</code></pre>
-<p>输出结果如下</p>
-<pre><code>(随机数生成略)
- 事件总数:600
- 目标事件Jan出现次数52   p[Jan]=0.0866667
-
- 目标事件Feb出现次数41   p[Feb]=0.0683333
-
- 目标事件Mar出现次数42   p[Mar]=0.07
-
- 目标事件Apr出现次数44   p[Apr]=0.0733333
-
- 目标事件May出现次数43   p[May]=0.0716667
-
- 目标事件Jun出现次数53   p[Jun]=0.0883333
-
- 目标事件Jul出现次数56   p[Jul]=0.0933333
-
- 目标事件Aug出现次数54   p[Aug]=0.09
-
- 目标事件Sept出现次数43  p[Sept]=0.0716667
-
- 目标事件Oct出现次数57   p[Oct]=0.095
-
- 目标事件Nov出现次数64   p[Nov]=0.106667
-
- 目标事件Dec出现次数51   p[Dec]=0.085
-</code></pre>
-<p>(再来个生日日期的,工程量更大)<br>
-最后编辑时间 2021/9/18</p>
+                            <h1 id="前言">前言</h1>
+<h2 id="2021年10月2日晚上835utc800辽海地区一周年纪念会顺利召开">2021年10月2日晚上8:35(UTC+8:00),辽海地区一周年纪念会顺利召开</h2>
+<h1 id="演讲稿原文">演讲稿原文</h1>
+<p>欢迎各位同志不远万里来到辽海人民大会堂来参加今天的辽海一周年纪念会。<br>
+　　今天是2021年10月2日，这是一个特别的日子，在去年的今天，一个坐落在服务器地图西北的一个崭新的地区——辽海地区，成立了。<br>
+　　这一年来，辽央区、山地开发区和辽西区相继成立，政府部门得到了完善，辽海的开发面积得到了扩大。<br>
+　　这一年来，辽海地区坚持发展，坚持向西北繁荣，现代化地区的目标迈进，并为了目标的实现作出了不少的努力。<br>
+　　在7，8月这两个月的时间，辽央区进行了大规模开发，山地部分区域也进行了开发，聚落与地区发展指数报表排名由七月份的51+名上升到九月份的33名，辽海地区在这两个月取得了飞跃的进步。<br>
+　　这一年来，辽海地区与各个聚落和地区友好地进行了交流，与部分聚落，地区建立了外交关系，还有部分聚落，地区对辽海进行了援助。这里，我对各个聚落和地区给予的帮助表示感谢，祝愿辽海与各个聚落和地区友谊永存。<br>
+　　这一年来，辽海地区也得到了不少玩家的帮助，比如在辽海的公路命名活动（此活动长期存在），不少玩家为辽海的公路命名提供了帮助，在这里，我想对各个对辽海开发给予过帮助的玩家表示诚挚的谢意。<br>
+　　但这一年来，由于辽海地区人数过少，导致辽海一年以来的实际开发时间不足3个月，各个地方开发尚不全面。但是，辽海必在接下来的一年里，不断地追求进步，我相信：辽海，未来可期！<br>
+　　谢谢大家！</p>
+<blockquote>
+<p>文稿 xiao_zhi_bili<br>
+文案支持 Xiaojiaaaah</p>
+</blockquote>
+<blockquote>
+<p>辽海地区人民政府&amp;辽海时讯<br>
+The People's Government of Liaohai Are.&amp;Liaohai News Center<br>
+2021.10.2</p>
+</blockquote>
+<h1 id="有关链接">有关链接</h1>
+<p>[新闻 - 辽海地区一周年纪念会成功召开]<a href="https://mcrail.top/news/2077/">https://mcrail.top/news/2077/</a></p>
 
                         </div>
                         
                             <div class="post-toc">
                                 <ul class="markdownIt-TOC">
-<li><a href="#%E5%86%99%E5%9C%A8%E5%89%8D%E9%9D%A2">写在前面</a></li>
-<li><a href="#%E6%AD%A3%E6%96%87">正文</a>
+<li><a href="#%E5%89%8D%E8%A8%80">前言</a>
 <ul>
-<li><a href="#1%E8%AE%A1%E7%AE%97%E7%A1%AC%E5%B8%81%E7%9A%84%E6%AD%A3%E5%8F%8D%E9%9D%A2%E6%A6%82%E7%8E%87">1.计算硬币的正反面概率</a></li>
-<li><a href="#2%E7%94%9F%E6%97%A5%E6%9C%88%E4%BB%BD%E8%AE%A1%E7%AE%97">2.生日月份计算</a></li>
+<li><a href="#2021%E5%B9%B410%E6%9C%882%E6%97%A5%E6%99%9A%E4%B8%8A835utc800%E8%BE%BD%E6%B5%B7%E5%9C%B0%E5%8C%BA%E4%B8%80%E5%91%A8%E5%B9%B4%E7%BA%AA%E5%BF%B5%E4%BC%9A%E9%A1%BA%E5%88%A9%E5%8F%AC%E5%BC%80">2021年10月2日晚上8:35(UTC+8:00),辽海地区一周年纪念会顺利召开</a></li>
 </ul>
 </li>
+<li><a href="#%E6%BC%94%E8%AE%B2%E7%A8%BF%E5%8E%9F%E6%96%87">演讲稿原文</a></li>
+<li><a href="#%E6%9C%89%E5%85%B3%E9%93%BE%E6%8E%A5">有关链接</a></li>
 </ul>
 
                             </div>
@@ -344,7 +235,7 @@ int main() {
 
                                                 <p class="copyright-item">
                                                     <span>&#x6C38;&#x4E45;&#x94FE;&#x63A5;:</span>
-                                                    <span><a href="https://qwd145-zhi.github.io/20210917_1/">https://qwd145-zhi.github.io/20210917_1/</a></span>
+                                                    <span><a href="https://qwd145-zhi.github.io/liao-hai-di-qu-yi-zhou-nian-ji-nian-hui-xiao_zhi_bili-yan-jiang-gao-yuan-wen/">https://qwd145-zhi.github.io/liao-hai-di-qu-yi-zhou-nian-ji-nian-hui-xiao_zhi_bili-yan-jiang-gao-yuan-wen/</a></span>
                                                 </p>
 
                                                 <p class="copyright-item">
@@ -359,9 +250,9 @@ int main() {
                                                                     <span style="margin-right:15px">
                         <i class="post-share"></i>
                         <span>&#x5206;&#x4EAB;:</span>
-                                                                    <a title="QR 码" target="_blank" href="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://qwd145-zhi.github.io/20210917_1/"><i class="fa fa-qrcode"></i></a>
-                                                                    <a title="QQ" target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://qwd145-zhi.github.io/20210917_1/&sharesource=qzone&title=论在计算机模拟下实现概率计算&pics=https://qwd145-zhi.github.io//images/avatar.png?v=1633790600899&summary="><i class="fa fa-qq"></i></a>
-                                                                    <a title="新浪微博" target="_blank" href="https://service.weibo.com/share/share.php?url=https://qwd145-zhi.github.io/20210917_1/&sharesource=weibo&title=论在计算机模拟下实现概率计算 + " - " + &pic="https://qwd145-zhi.github.io//images/avatar.png?v=1633790600899 "><i class="fa fa-weibo "></i></a>
+                                                                    <a title="QR 码" target="_blank" href="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://qwd145-zhi.github.io/liao-hai-di-qu-yi-zhou-nian-ji-nian-hui-xiao_zhi_bili-yan-jiang-gao-yuan-wen/"><i class="fa fa-qrcode"></i></a>
+                                                                    <a title="QQ" target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://qwd145-zhi.github.io/liao-hai-di-qu-yi-zhou-nian-ji-nian-hui-xiao_zhi_bili-yan-jiang-gao-yuan-wen/&sharesource=qzone&title=辽海地区一周年纪念会xiao_zhi_bili演讲稿原文&pics=https://qwd145-zhi.github.io//images/avatar.png?v=1633790600899&summary="><i class="fa fa-qq"></i></a>
+                                                                    <a title="新浪微博" target="_blank" href="https://service.weibo.com/share/share.php?url=https://qwd145-zhi.github.io/liao-hai-di-qu-yi-zhou-nian-ji-nian-hui-xiao_zhi_bili-yan-jiang-gao-yuan-wen/&sharesource=weibo&title=辽海地区一周年纪念会xiao_zhi_bili演讲稿原文 + " - " + &pic="https://qwd145-zhi.github.io//images/avatar.png?v=1633790600899 "><i class="fa fa-weibo "></i></a>
 
                                                                     </span>
                                                                     
@@ -380,8 +271,8 @@ int main() {
                                                                                     <span class="tag ">
                         
                         
-                        <a href="https://qwd145-zhi.github.io/zhenghuo/">#
-                    整活
+                        <a href="https://qwd145-zhi.github.io/DC-liaohai/">#
+                    DC-辽海
                         </a>
                         
                             
@@ -399,13 +290,9 @@ int main() {
                                                                                 <!---->
                                                                                 <section class="post-nav">
                                                                                     
-                                                                                        <a class="prev" rel="prev" href="https://qwd145-zhi.github.io/liao-hai-di-qu-yi-zhou-nian-ji-nian-hui-xiao_zhi_bili-yan-jiang-gao-yuan-wen/">
-                                                                                            辽海地区一周年纪念会xiao_zhi_bili演讲稿原文
-                                                                                        </a>
-                                                                                        
                                                                                             
-                                                                                                <a class="next" rel="next" href="https://qwd145-zhi.github.io/debug/">
-                                                                                                    debug
+                                                                                                <a class="next" rel="next" href="https://qwd145-zhi.github.io/20210917_1/">
+                                                                                                    论在计算机模拟下实现概率计算
                                                                                                 </a>
                                                                                                 
                                                                                 </section>

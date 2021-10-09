@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://qwd145-zhi.github.io/</id>
     <title>小智(qwd145)的博客站</title>
-    <updated>2021-09-18T06:58:01.228Z</updated>
+    <updated>2021-10-09T14:43:26.235Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://qwd145-zhi.github.io/"/>
     <link rel="self" href="https://qwd145-zhi.github.io/atom.xml"/>
@@ -10,6 +10,37 @@
     <logo>https://qwd145-zhi.github.io/images/avatar.png</logo>
     <icon>https://qwd145-zhi.github.io/favicon.ico</icon>
     <rights>All rights reserved 2021, 小智(qwd145)的博客站</rights>
+    <entry>
+        <title type="html"><![CDATA[辽海地区一周年纪念会xiao_zhi_bili演讲稿原文]]></title>
+        <id>https://qwd145-zhi.github.io/liao-hai-di-qu-yi-zhou-nian-ji-nian-hui-xiao_zhi_bili-yan-jiang-gao-yuan-wen/</id>
+        <link href="https://qwd145-zhi.github.io/liao-hai-di-qu-yi-zhou-nian-ji-nian-hui-xiao_zhi_bili-yan-jiang-gao-yuan-wen/">
+        </link>
+        <updated>2021-10-09T14:32:42.000Z</updated>
+        <content type="html"><![CDATA[<h1 id="前言">前言</h1>
+<h2 id="2021年10月2日晚上835utc800辽海地区一周年纪念会顺利召开">2021年10月2日晚上8:35(UTC+8:00),辽海地区一周年纪念会顺利召开</h2>
+<h1 id="演讲稿原文">演讲稿原文</h1>
+<p>欢迎各位同志不远万里来到辽海人民大会堂来参加今天的辽海一周年纪念会。<br>
+　　今天是2021年10月2日，这是一个特别的日子，在去年的今天，一个坐落在服务器地图西北的一个崭新的地区——辽海地区，成立了。<br>
+　　这一年来，辽央区、山地开发区和辽西区相继成立，政府部门得到了完善，辽海的开发面积得到了扩大。<br>
+　　这一年来，辽海地区坚持发展，坚持向西北繁荣，现代化地区的目标迈进，并为了目标的实现作出了不少的努力。<br>
+　　在7，8月这两个月的时间，辽央区进行了大规模开发，山地部分区域也进行了开发，聚落与地区发展指数报表排名由七月份的51+名上升到九月份的33名，辽海地区在这两个月取得了飞跃的进步。<br>
+　　这一年来，辽海地区与各个聚落和地区友好地进行了交流，与部分聚落，地区建立了外交关系，还有部分聚落，地区对辽海进行了援助。这里，我对各个聚落和地区给予的帮助表示感谢，祝愿辽海与各个聚落和地区友谊永存。<br>
+　　这一年来，辽海地区也得到了不少玩家的帮助，比如在辽海的公路命名活动（此活动长期存在），不少玩家为辽海的公路命名提供了帮助，在这里，我想对各个对辽海开发给予过帮助的玩家表示诚挚的谢意。<br>
+　　但这一年来，由于辽海地区人数过少，导致辽海一年以来的实际开发时间不足3个月，各个地方开发尚不全面。但是，辽海必在接下来的一年里，不断地追求进步，我相信：辽海，未来可期！<br>
+　　谢谢大家！</p>
+<blockquote>
+<p>文稿 xiao_zhi_bili<br>
+文案支持 Xiaojiaaaah</p>
+</blockquote>
+<blockquote>
+<p>辽海地区人民政府&amp;辽海时讯<br>
+The People's Government of Liaohai Are.&amp;Liaohai News Center<br>
+2021.10.2</p>
+</blockquote>
+<h1 id="有关链接">有关链接</h1>
+<p>[新闻 - 辽海地区一周年纪念会成功召开]<a href="https://mcrail.top/news/2077/">https://mcrail.top/news/2077/</a></p>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[论在计算机模拟下实现概率计算]]></title>
         <id>https://qwd145-zhi.github.io/20210917_1/</id>
@@ -63,7 +94,7 @@ using namespace std;
 
 int main() {
 	int a;
-	double month[12] {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+	double month[12] {};
 	double total;
 	srand((int)time(0));
 	for (int i = 0; i &lt; 600; i++) {
